@@ -14,7 +14,7 @@ const ACTIONS = {
 function toDoReducer (state, action){
   switch(action.type){
     case ACTIONS.ADD_TO_DO:
-      return {...state,  }; // Refine this
+      return {...state, }; // Refine this- how do I dynamically add a new to do list with the edit and delete buttons next to it?
       case ACTIONS.EDIT_TO_DO:
         return {
           ...state, 
@@ -40,7 +40,7 @@ function checkBoxReducer (state, action) {
 function App() {
 
   // Define the reducer function
-  const [toDo, dispatch] = useReducer(toDoReducer, {toDo: []})
+  const [toDo, dispatch] = useReducer(toDoReducer, {toDo:''})
   const [isChecked, setIsChecked] = useState(false)
 
   return (
