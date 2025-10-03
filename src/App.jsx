@@ -1,16 +1,70 @@
+// Import
 import { useReducer, useState } from 'react';
-import { }
-
 import './App.css'
+// import toDoListItems from './utilities/ToDoListITems';
+
+// Define Action types
+
+const ACTIONS = {
+    ADD_TO_DO: "ADD_TO_DO",
+    EDIT_TO_DO: "EDIT_TO_DO",
+    DELETE_TO_DO: "DELETE_TO_DO",
+    TOOGLE: "TOOGLE"
+};
+
+// Define Initial States
+const initalState ={
+  toDo : [],
+};
+
+function reducer (state, action){
+  switch(action.type){
+    case ACTIONS.ADD_TO_DO:
+      return {...state,  }; // Refine this
+      case ACTIONS.EDIT_TO_DO:
+        return {
+          ...state, 
+           }; // Refine this
+        case ACTIONS.DELETE_TO_DO:
+          return {...state,  }; // Refine this
+          default:
+            return state;
+
+  }
+};
+
+function checkBoxReducer (state, action) {
+  switch (action.type) {
+    case "TOOGLE":
+      return { isChecked: !state.isChecked }
+      default:
+        return state;
+  }
+}
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  // Define the reducer function
+  const [toDo, dispatch] = useReducer(reducer, {toDo: []})
+  const [isChecked, setIsChecked] = useState(false)
 
   return (
     <>
-      <div>
-        <h1>To-do List</h1>
-      </div>
+        <h1>Create Todo List</h1>
+        <input name = "addTask" placeholder="Add task"/>
+        <button onClick={()=>dispatch({ type: "ADD_TO_DO" })}>Add</button><br/>
+        <label>
+            <input type="checkbox" checked= {isChecked} onChange={()=>dispatch({ type: "TOOGLE" })}/>
+            <button>Edit</button>
+            <button>Delete</button>
+        </label>
+        
+
+        <div>
+  
+  
+        </div>
       
     </>
   )
