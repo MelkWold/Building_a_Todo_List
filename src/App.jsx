@@ -1,7 +1,6 @@
 // Import
 import { useReducer, useState } from 'react';
 import './App.css'
-// import toDoListItems from './utilities/ToDoListITems';
 
 // Define Action types
 
@@ -11,13 +10,8 @@ const ACTIONS = {
     DELETE_TO_DO: "DELETE_TO_DO",
     TOOGLE: "TOOGLE"
 };
-
-// Define Initial States
-const initalState ={
-  toDo : [],
-};
-
-function reducer (state, action){
+// Define reducers
+function toDoReducer (state, action){
   switch(action.type){
     case ACTIONS.ADD_TO_DO:
       return {...state,  }; // Refine this
@@ -46,7 +40,7 @@ function checkBoxReducer (state, action) {
 function App() {
 
   // Define the reducer function
-  const [toDo, dispatch] = useReducer(reducer, {toDo: []})
+  const [toDo, dispatch] = useReducer(toDoReducer, {toDo: []})
   const [isChecked, setIsChecked] = useState(false)
 
   return (
@@ -56,8 +50,8 @@ function App() {
         <button onClick={()=>dispatch({ type: "ADD_TO_DO" })}>Add</button><br/>
         <label>
             <input type="checkbox" checked= {isChecked} onChange={()=>dispatch({ type: "TOOGLE" })}/>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button type="button" onClick={()=>dispatch({ type: "EDIT_TO_DO" })}>Edit</button>
+            <button type="button" onClick={()=>dispatch({ type: "DELETE_TO_DO" })}>Delete</button>
         </label>
         
 
