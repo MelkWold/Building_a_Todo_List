@@ -19,20 +19,27 @@ function toDoReducer (state, action){
         return [...state, { id:Date.now(), text: action.payload, completed: false, isEditing: false, },];
     
     case ACTIONS.TOOGLE_TO_DO: {
-      // Find a todo list that matches the click 
+      // Map over the todos list to find a todo list that matches the choice 
+      // Create a copy of the todo
       // Toggle a to-do items check box
         return todos.map((todo) => todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo );
     }
        
     case ACTIONS.EDIT_TO_DO: {
-        return {...state, }
-      } // complete this
+      // Map over the todos list to find a todo list that matches the choice
+      // Create a copy of the todo
+      // set isEditing to true to make the todo editable
+        return todos.map((todo) => todo.id === action.payload ? { ...todo, isEditing: true} : todo);
+      } 
+    
+    
         
-        case ACTIONS.DELETE_TO_DO: {
-          return {...state,  }; // complete this
-        } 
-          default:
-            return state;
+    case ACTIONS.DELETE_TO_DO: {
+      // Loop through all todos and keeps those whose ID doesn't match the one passed by the action
+      return todos.filter((todo) => todo.id !== action.payload ); 
+      } 
+        default:
+        return state;
 
   }
 };
