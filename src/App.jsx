@@ -15,11 +15,14 @@ const ACTIONS = {
 function toDoReducer (state, action){
   switch(action.type){
     case ACTIONS.ADD_TO_DO: 
-      return [...state, { id:Date.now(), text: action.payload, completed: false, },];
+      // Copy the existing todo items and create a new to do object using the input. Generate unique ID (? Not sure if there is a better option) based to current timestamp
+        return [...state, { id:Date.now(), text: action.payload, completed: false, isEditing: false, },];
     
     case ACTIONS.TOOGLE_TO_DO: {
-        return {...state, }
-      } // complete this
+      // Find a todo list that matches the click 
+      // Toggle a to-do items check box
+        return todos.map((todo) => todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo );
+    }
        
     case ACTIONS.EDIT_TO_DO: {
         return {...state, }
