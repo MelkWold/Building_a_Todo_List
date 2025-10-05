@@ -2,8 +2,9 @@
 import { useReducer, useState } from 'react';
 import './App.css'
 
-// Define Action types
 
+// Define Action types
+const toDo = '';
 const ACTIONS = {
     ADD_TO_DO: "ADD_TO_DO",
     EDIT_TO_DO: "EDIT_TO_DO",
@@ -14,7 +15,8 @@ const ACTIONS = {
 function toDoReducer (state, action){
   switch(action.type){
     case ACTIONS.ADD_TO_DO:
-      return {...state, }; // Refine this- how do I dynamically add a new to do list with the edit and delete buttons next to it?
+      // Refine this
+      return {...state, }; 
       case ACTIONS.EDIT_TO_DO:
         return {
           ...state, 
@@ -27,15 +29,9 @@ function toDoReducer (state, action){
   }
 };
 
-function checkBoxReducer (state, action) {
-  switch (action.type) {
-    case "TOOGLE":
-      return { isChecked: !state.isChecked }
-      default:
-        return state;
-  }
-}
+function handleAddTask() {
 
+}
 
 function App() {
 
@@ -46,21 +42,24 @@ function App() {
   return (
     <>
         <h1>Create Todo List</h1>
-        <input name = "addTask" placeholder="Add task"/>
-        <button onClick={()=>dispatch({ type: "ADD_TO_DO" })}>Add</button><br/>
-        <label>
-            <input type="checkbox" checked= {isChecked} onChange={()=>dispatch({ type: "TOOGLE" })}/>
-            <button type="button" onClick={()=>dispatch({ type: "EDIT_TO_DO" })}>Edit</button>
-            <button type="button" onClick={()=>dispatch({ type: "DELETE_TO_DO" })}>Delete</button>
-        </label>
-        
 
         <div>
-  
-  
-        </div>
-      
-    </>
+          <input type = "text" placeholder="Enter a task" onChange = {(event) => setNewText(e.target.value)} />
+
+          <button onClick={handleAddTask}>Add</button><br/>
+        
+          {toDo.map((item)=> {
+            <div>
+            <li>{item}</li>
+                <input type="checkbox" checked= {isChecked} onChange={()=>dispatch({ type: "TOOGLE" })}/>
+                <button type="button" onClick={()=>dispatch({ type: "EDIT_TO_DO" })}>Edit</button>
+                <button type="button" onClick={()=>dispatch({ type: "DELETE_TO_DO" })}>Delete</button>
+            </div>
+                
+            })} 
+        </div><br/>
+                 
+  </>
   )
 }
 
