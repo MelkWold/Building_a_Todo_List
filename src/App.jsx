@@ -11,26 +11,29 @@ const ACTIONS = {
     DELETE_TO_DO: "DELETE_TO_DO",
     TOOGLE: "TOOGLE"
 };
-// Define reducers
+// Define reducer
 function toDoReducer (state, action){
   switch(action.type){
-    case ACTIONS.ADD_TO_DO:
-      // Refine this
-      return {...state, }; 
-      case ACTIONS.EDIT_TO_DO:
-        return {
-          ...state, 
-           }; // Refine this
-        case ACTIONS.DELETE_TO_DO:
-          return {...state,  }; // Refine this
+    case ACTIONS.ADD_TO_DO: {
+      return {...state, }
+    }
+       
+      case ACTIONS.EDIT_TO_DO: {
+        return {...state, }
+      } // complete this
+        
+        case ACTIONS.DELETE_TO_DO: {
+          return {...state,  }; // complete this
+        } 
           default:
             return state;
 
   }
 };
 
-function handleAddTask() {
-
+// Handle adding a task
+function handleAddTask(){
+  //complete the code 
 }
 
 function App() {
@@ -42,22 +45,25 @@ function App() {
   return (
     <>
         <h1>Create Todo List</h1>
-
+      {/*Add input and Add Button*/}
         <div>
-          <input type = "text" placeholder="Enter a task" onChange = {(event) => setNewText(e.target.value)} />
+          <input id = "addTask" type = "text" placeholder="Enter a task" value = {input} onChange = {(e) =>setInput(e.target.value)}/>
 
           <button onClick={handleAddTask}>Add</button><br/>
-        
-          {toDo.map((item)=> {
+       </div>
+
+      {/*Add the List of To do*/}
+       <div>
+          {/* {toDo.map((item)=> {
             <div>
             <li>{item}</li>
                 <input type="checkbox" checked= {isChecked} onChange={()=>dispatch({ type: "TOOGLE" })}/>
-                <button type="button" onClick={()=>dispatch({ type: "EDIT_TO_DO" })}>Edit</button>
-                <button type="button" onClick={()=>dispatch({ type: "DELETE_TO_DO" })}>Delete</button>
+                {is.Checked} ? <button type="button" onClick={()=>dispatch({ type: "EDIT_TO_DO" })}>Edit</button>
+               {isChecked} ? <button type="button" onClick={()=>dispatch({ type: "DELETE_TO_DO" })}>Delete</button>
             </div>
                 
-            })} 
-        </div><br/>
+            })}  */}
+      </div><br/>
                  
   </>
   )
